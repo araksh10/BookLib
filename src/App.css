@@ -9,7 +9,7 @@
   font-family: 'Segoe UI', sans-serif;
   text-align: center;
   padding: 2rem;
-  background: #76cce6;
+  background: #579;
 }
 
 .book-list {
@@ -20,7 +20,7 @@
 }
 
 .book-card {
-  background: #7ab;
+  background: #135;
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.1);
