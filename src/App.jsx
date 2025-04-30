@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import BookAdder from "./components/BookAdder";
 
 const API_URL = "https://booksapi-production-62ca.up.railway.app/books";
 
@@ -14,8 +15,16 @@ function App() {
 			.catch((err) => console.error("Error fetching books: ", err));
 	}, []);
 
+	const handleBookAdded = (newBook) => {
+		setBooks((prev) => [...prev, newBook]);
+	};
+
 	return (
 		<>
+			<div>
+				<h1>Add Books Here: </h1>
+				<BookAdder onBookAdded={handleBookAdded} />
+			</div>
 			<div className="App">
 				<h1>Book Viewer</h1>
 				<div className="book-list">
