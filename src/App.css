@@ -1,0 +1,28 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.App {
+  width: 100vw;
+  
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 2rem;
+  background: #76cce6;
+}
+
+.book-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin-top: 2rem;
+}
+
+.book-card {
+  background: #7ab;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  text-align: left;
+}
