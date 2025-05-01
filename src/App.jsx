@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./App.css";
+// import "./App.css";
 import BookAdder from "./components/BookAdder";
 import EditBookModal from "./components/EditBookModal";
+import BookCard from "./components/BookCard";
 
 const API_URL = "https://booksapi-production-62ca.up.railway.app/books";
 
@@ -38,31 +39,25 @@ function App() {
 
 	return (
 		<>
+			{/* <div className="min-h-screen bg-gray-100"> */}
+			<header className="bg-blue-600 text-white p-4 shadow">
+				<h1 className="text-2xl font-bold">My Book Library</h1>
+			</header>
+			{/* </div> */}
 			<div>
 				<h1>Add Books Here: </h1>
 				<BookAdder onBookAdded={handleBookAdded} />
 			</div>
-			<div className="App">
-				<h1>Book Viewer</h1>
-				<div className="book-list">
-					{books.map((book) => (
-						<div key={book._id} className="book-card">
-							<h2>{book.title}</h2>
-							<p>
-								<strong>Author:</strong> {book.author}
-							</p>
-							<p>
-								<strong>Pages:</strong> {book.pages}
-							</p>
-							<p>
-								<strong>Published:</strong> {book.published ? "Yes" : "No"}
-							</p>
-							<button onClick={() => setEditingBook(book)}>Edit</button>
-							<button onClick={() => handleDelete(book._id)}>Delete</button>
-						</div>
-					))}
-				</div>
-			</div>
+			<main className="p-4 max-w-4xl mx-auto">
+				<section>
+					<h2 className="text-xl font-semibold mb-4">Book List</h2>
+					<div className="grid gap-4">
+						{books.map((book, index) => (
+							<BookCard key={index} {...book} />
+						))}
+					</div>
+				</section>
+			</main>
 			{editingBook && (
 				<EditBookModal
 					book={editingBook}
@@ -72,6 +67,11 @@ function App() {
 			)}
 		</>
 	);
+}
+
+{
+	/* <button onClick={() => setEditingBook(book)}>Edit</button>
+<button onClick={() => handleDelete(book._id)}>Delete</button> */
 }
 
 export default App;
