@@ -42,7 +42,7 @@ function App() {
 		<>
 			{/* <div className="min-h-screen bg-gray-100"> */}
 			<header className="bg-blue-600 text-white p-4 shadow">
-				<h1 className="text-2xl font-bold">My Book Library</h1>
+				<h1 className="text-2xl font-bold mb-2">My Book Library</h1>
 				<button
 					onClick={() => setShowModal(true)}
 					className="bg-white text-blue-600 px-4 py-2 rounded shadow"
@@ -56,7 +56,12 @@ function App() {
 					<h2 className="text-xl font-semibold mb-4">Book List</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 						{books.map((book, index) => (
-							<BookCard key={index} {...book} />
+							<BookCard
+								key={index}
+								{...book}
+								onDelete={() => handleDelete(book._id)}
+								onBookEdit={() => setEditingBook(book)}
+							/>
 						))}
 					</div>
 				</section>

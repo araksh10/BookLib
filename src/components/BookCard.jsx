@@ -1,6 +1,13 @@
 import React from "react";
 
-const BookCard = ({ title, author, pages, published }) => {
+const BookCard = ({
+	title,
+	author,
+	pages,
+	published,
+	onDelete,
+	onBookEdit,
+}) => {
 	return (
 		<div className="bg-white shadow rounded-xl hover:shadow-lg p-4 transition duration-300">
 			<h3 className="text-xl font-bold mb-2">{title}</h3>
@@ -12,6 +19,18 @@ const BookCard = ({ title, author, pages, published }) => {
 					{published ? "Published" : "Unpublished"}
 				</span>
 			</p>
+			<button
+				className="px-4 py-2 mr-2 bg-indigo-400 rounded text-white font-semibold"
+				onClick={onBookEdit}
+			>
+				Edit
+			</button>
+			<button
+				className="px-4 py-2 mr-2 bg-red-600 rounded text-white font-semibold"
+				onClick={() => onDelete()}
+			>
+				Delete
+			</button>
 		</div>
 	);
 };
