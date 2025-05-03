@@ -10,6 +10,7 @@ const API_URL = "https://booksapi-production-62ca.up.railway.app/books";
 function App() {
 	const [books, setBooks] = useState([]);
 	const [editingBook, setEditingBook] = useState(null);
+	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
 		axios
@@ -42,22 +43,30 @@ function App() {
 			{/* <div className="min-h-screen bg-gray-100"> */}
 			<header className="bg-blue-600 text-white p-4 shadow">
 				<h1 className="text-2xl font-bold">My Book Library</h1>
+				<button
+					onClick={() => setShowModal(true)}
+					className="bg-white text-blue-600 px-4 py-2 rounded shadow"
+				>
+					Add Book
+				</button>
 			</header>
 			{/* </div> */}
-			<div>
-				<h1>Add Books Here: </h1>
-				<BookAdder onBookAdded={handleBookAdded} />
-			</div>
-			<main className="p-4 max-w-4xl mx-auto">
+			<main className="bg-cyan-100 p-4">
 				<section>
 					<h2 className="text-xl font-semibold mb-4">Book List</h2>
-					<div className="grid gap-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 						{books.map((book, index) => (
 							<BookCard key={index} {...book} />
 						))}
 					</div>
 				</section>
 			</main>
+			{showModal && (
+				<BookAdder
+					onBookAdded={handleBookAdded}
+					onClose={() => setShowModal(false)}
+				/>
+			)}
 			{editingBook && (
 				<EditBookModal
 					book={editingBook}
