@@ -12,6 +12,7 @@ function App() {
 	const [books, setBooks] = useState([]);
 	const [editingBook, setEditingBook] = useState(null);
 	const [showModal, setShowModal] = useState(false);
+	const [showToast, setShowToast] = useState(false);
 
 	useEffect(() => {
 		axios
@@ -22,6 +23,8 @@ function App() {
 
 	const handleBookAdded = (newBook) => {
 		setBooks((prev) => [...prev, newBook]);
+		setShowToast(true);
+		setTimeout(() => setShowToast(false), 3000);
 	};
 
 	const handleDelete = async (id) => {
@@ -86,6 +89,11 @@ function App() {
 					onClose={() => setEditingBook(null)}
 					onUpdated={handleUpdate}
 				/>
+			)}
+			{showToast && (
+				<div className="fixed top-30 right-5 bg-green-500 text-white px-6 py-3 rounded shadow-lg animate-slide-in">
+					✅ Success! Your book was added!
+				</div>
 			)}
 		</>
 	);
