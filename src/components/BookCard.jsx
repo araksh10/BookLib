@@ -19,18 +19,20 @@ const BookCard = ({
 					{published ? "Published" : "Unpublished"}
 				</span>
 			</p>
-			<button
-				className="px-4 py-2 mr-2 bg-indigo-400 rounded text-white font-semibold"
-				onClick={onBookEdit}
-			>
-				Edit
-			</button>
-			<button
-				className="px-4 py-2 mr-2 bg-red-600 rounded text-white font-semibold"
-				onClick={() => onDelete()}
-			>
-				Delete
-			</button>
+			<div className="mt-2">
+				<button
+					className="px-4 py-2 mr-2 bg-indigo-400 rounded text-white font-semibold"
+					onClick={onBookEdit}
+				>
+					Edit
+				</button>
+				<button
+					className="px-4 py-2 mr-2 bg-red-600 rounded text-white font-semibold"
+					onClick={() => onDelete()}
+				>
+					Delete
+				</button>
+			</div>
 		</div>
 	);
 };

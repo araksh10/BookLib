@@ -33,9 +33,9 @@ const BookAdder = ({ onBookAdded, onClose }) => {
 
 	return (
 		<div className="fixed inset-0 backdrop-blur-sm flex justify-center items-center">
-			<div className="bg-cyan-200 p-6 rounded-4xl shadow-lg w-full max-w-md">
+			<div className="bg-cyan-200 p-6 rounded-4xl shadow-lg border w-full max-w-md">
 				<h2 className="text-xl font-bold mb-4">Add New Book: </h2>
-				<form onSubmit={handleSubmit} className="add-book-form">
+				<form onSubmit={handleSubmit}>
 					<input
 						name="title"
 						className="w-full mb-2 p-2 bg-white border rounded"
@@ -61,7 +61,7 @@ const BookAdder = ({ onBookAdded, onClose }) => {
 						placeholder="Pages"
 						required
 					/>
-					<label className="mr-2 text-gray-600">
+					<label className="mr-2 text-gray-700">
 						Published
 						<input
 							name="published"
@@ -80,7 +80,7 @@ const BookAdder = ({ onBookAdded, onClose }) => {
 					<button
 						type="button"
 						onClick={onClose}
-						className="mr-2 px-4 py-2 bg-indigo-400 text-white rounded hover:bg-indigo-600 "
+						className="mr-2 px-4 py-2 bg-indigo-400 text-white rounded hover:bg-indigo-600"
 					>
 						Cancel
 					</button>
