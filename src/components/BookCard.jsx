@@ -19,7 +19,7 @@ const BookCard = ({
 					{published ? "Published" : "Unpublished"}
 				</span>
 			</p>
-			<div className="mt-2">
+			<div className="mt-2 select-none">
 				<button
 					className="px-4 py-2 mr-2 bg-indigo-400 rounded text-white font-semibold"
 					onClick={onBookEdit}

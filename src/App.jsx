@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import "./App.css";
 import BookAdder from "./components/BookAdder";
 import EditBookModal from "./components/EditBookModal";
 import BookCard from "./components/BookCard";
+import LogoBL from "./assets/BookLib.svg";
+import Bg from "./assets/bg.jpg";
 
 const API_URL = "https://booksapi-production-62ca.up.railway.app/books";
 
@@ -41,20 +42,27 @@ function App() {
 	return (
 		<>
 			{/* <div className="min-h-screen bg-gray-100"> */}
-			<header className="bg-blue-600 text-white p-4 shadow">
-				<h1 className="text-2xl font-bold mb-2">My Book Library</h1>
+			<header className="bg-emerald-800 text-white p-4 shadow w-full flex justify-around sticky top-0 ">
+				<img
+					src={LogoBL}
+					className="w-16 mr-2 select-none"
+					alt="BookLib Logo"
+				/>
+				<h1 className="text-4xl font-bold font-[georgia] mb-2 select-none">
+					My Book Library
+				</h1>
 				<button
 					onClick={() => setShowModal(true)}
-					className="bg-white text-blue-600 px-4 py-2 rounded shadow"
+					className="bg-white text-blue-600 px-4 py-2 rounded shadow cursor-pointer"
 				>
 					Add Book
 				</button>
 			</header>
 			{/* </div> */}
-			<main className="bg-cyan-100 p-4">
+			<main className="p-4 bg-[url('./assets/bg.jpg')]">
 				<section>
-					<h2 className="text-xl font-semibold mb-4">Book List</h2>
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+					<h2 className="text-4xl font-bold mb-4 text-white">Book List</h2>
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
 						{books.map((book, index) => (
 							<BookCard
 								key={index}
