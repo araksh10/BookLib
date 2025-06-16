@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const BookAdder = ({ onBookAdded, onClose, loading }) => {
+const BookAdder = ({ onBookAdded, onClose, onLoading }) => {
 	const [form, setForm] = useState({
 		title: "",
 		author: "",
@@ -26,6 +26,7 @@ const BookAdder = ({ onBookAdded, onClose, loading }) => {
 			);
 			onBookAdded(response.data.savedBook);
 			onClose();
+			onLoading();
 		} catch (err) {
 			console.log("Error adding books: ", err);
 		}
@@ -73,7 +74,7 @@ const BookAdder = ({ onBookAdded, onClose, loading }) => {
 					</label>
 					<button
 						type="submit"
-						onClick={loading}
+						onClick={onLoading}
 						className="px-4 py-2 mr-2 bg-blue-600 text-white rounded hover:bg-blue-800"
 					>
 						Add Book

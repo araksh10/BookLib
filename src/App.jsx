@@ -33,6 +33,7 @@ function App() {
 		try {
 			await axios.delete(`${API_URL}/${id}`);
 			setBooks((prev) => prev.filter((book) => book._id !== id));
+			setShowLoader(false);
 		} catch (err) {
 			console.error("Error Deleting Book: ", err);
 		}
@@ -46,7 +47,6 @@ function App() {
 
 	return (
 		<>
-			{/* <div className="min-h-screen bg-gray-100"> */}
 			<header className="bg-cyan-700 text-white p-4 shadow w-full flex justify-around sticky top-0 ">
 				<img
 					src={LogoBL}
@@ -63,7 +63,6 @@ function App() {
 					Add Book
 				</button>
 			</header>
-			{/* </div> */}
 			<main className="p-4 bg-cyan-900">
 				<section className="rounde">
 					<h2 className="text-4xl font-bold mb-4 text-white">Book List</h2>
@@ -72,7 +71,10 @@ function App() {
 							<BookCard
 								key={index}
 								{...book}
-								onDelete={() => handleDelete(book._id)}
+								onDelete={() => {
+									handleDelete(book._id);
+									setShowLoader(true);
+								}}
 								onBookEdit={() => setEditingBook(book)}
 							/>
 						))}
@@ -83,7 +85,7 @@ function App() {
 				<BookAdder
 					onBookAdded={handleBookAdded}
 					onClose={() => setShowModal(false)}
-					loader={() => setShowLoader(true)}
+					onLoading={() => setShowLoader(!showLoader)}
 				/>
 			)}
 			{editingBook && (
@@ -103,14 +105,8 @@ function App() {
 					<Loader />
 				</div>
 			)}
-			{/* <Loader /> */}
 		</>
 	);
-}
-
-{
-	/* <button onClick={() => setEditingBook(book)}>Edit</button>
-<button onClick={() => handleDelete(book._id)}>Delete</button> */
 }
 
 export default App;
