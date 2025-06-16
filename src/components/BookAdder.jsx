@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const BookAdder = ({ onBookAdded, onClose }) => {
+const BookAdder = ({ onBookAdded, onClose, loading }) => {
 	const [form, setForm] = useState({
 		title: "",
 		author: "",
@@ -73,6 +73,7 @@ const BookAdder = ({ onBookAdded, onClose }) => {
 					</label>
 					<button
 						type="submit"
+						onClick={loading}
 						className="px-4 py-2 mr-2 bg-blue-600 text-white rounded hover:bg-blue-800"
 					>
 						Add Book
