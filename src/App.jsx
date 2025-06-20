@@ -75,7 +75,9 @@ function App() {
 									handleDelete(book._id);
 									setShowLoader(true);
 								}}
-								onBookEdit={() => setEditingBook(book)}
+								onBookEdit={() => {
+									setEditingBook(book);
+								}}
 							/>
 						))}
 					</div>
@@ -93,6 +95,7 @@ function App() {
 					book={editingBook}
 					onClose={() => setEditingBook(null)}
 					onUpdated={handleUpdate}
+					onLoading={() => setShowLoader(!showLoader)}
 				/>
 			)}
 			{showToast && (

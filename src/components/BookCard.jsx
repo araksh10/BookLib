@@ -9,7 +9,7 @@ const BookCard = ({
 	onBookEdit,
 }) => {
 	return (
-		<div className="flex flex-col justify-between bg-white shadow rounded-xl hover:shadow-lg p-4 transition duration-300">
+		<div className="flex flex-col justify-between bg-white shadow rounded-xl hover:shadow-lg p-4 transition duration-300 hover:scale-105">
 			<div>
 				<h3 className="text-xl font-bold mb-2 capitalize">{title}</h3>
 				<p className="text-gray-700 mb-1">Author: {author}</p>

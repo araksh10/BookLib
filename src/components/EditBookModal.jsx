@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const EditBookModal = ({ book, onUpdated, onClose }) => {
+const EditBookModal = ({ book, onUpdated, onClose, onLoading }) => {
 	const [form, setForm] = useState(book);
 	const API_URL = "https://booksapi-production-62ca.up.railway.app/books";
 
@@ -23,6 +23,7 @@ const EditBookModal = ({ book, onUpdated, onClose }) => {
 			const response = await axios.put(`${API_URL}/${form._id}`, form);
 			onUpdated(response.data.book);
 			onClose();
+			onLoading();
 		} catch (err) {
 			console.error("Error updating book: ", err);
 		}
@@ -68,6 +69,7 @@ const EditBookModal = ({ book, onUpdated, onClose }) => {
 					<button
 						className="px-4 py-2 mr-2 bg-blue-600 text-white rounded hover:bg-blue-800"
 						type="submit"
+						onClick={onLoading}
 					>
 						Update
 					</button>
